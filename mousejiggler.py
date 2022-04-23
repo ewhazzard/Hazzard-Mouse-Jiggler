@@ -13,11 +13,11 @@ def random_jiggle(cur_pos, duration):
     
     while(i < duration):
         try:
-            random_step = random.randrange(-100, 100, 10)
-            new_pos = (cur_pos[0] + random_step, cur_pos[1] + random_step)
+            random_x_step = random.randrange(-100, 100, 10)
+            random_y_step = random.randrange(-100, 100, 10)
+            new_pos = (cur_pos[0] + random_x_step, cur_pos[1] + random_y_step)
             pyautogui.moveTo(new_pos[0], new_pos[1], .5)
             i += 1
-            cur_pos = pyautogui.position()
         except pyautogui.FailSafeException:
             cur_pos = (pyautogui.size()[0]/2, pyautogui.size()[1]/2)
             i += 1
