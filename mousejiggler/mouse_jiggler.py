@@ -59,6 +59,8 @@ def fill_dict():
     alphabet =  list(string.ascii_lowercase)
     for item in alphabet:
         map_dict[item] = mouse_map.mouse_map(pyautogui.size()[0], pyautogui.size()[1])
+        map_dict[item].mouse_map.set_map(item)
+        map_dict[item].mouse_map.get_map()
         
         
 

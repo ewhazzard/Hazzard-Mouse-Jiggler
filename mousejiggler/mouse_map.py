@@ -12,5 +12,5 @@ class mouse_map:
     def get_map(self):
         return m_map
     
-    def set_map(self, m_map):
-        self.m_map = m_map
+    def set_map(self, key):
+        pass      
