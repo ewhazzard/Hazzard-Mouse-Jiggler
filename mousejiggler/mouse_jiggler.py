@@ -3,13 +3,15 @@ import random
 import mouse_map
 import string
 
-def random_jiggle(cur_pos, duration):
+def random_jiggle():
     """Randomly jiggles the mouse for a set amount of time starting at the current mouse position
 
     Args:
         cur_pos (tupple): current mouse position retrieved by pyautogui.position()
         duration (_type_): amount of time to jiggle the mouse
     """
+    cur_pos = pyautogui.position()
+    duration = 100
     i = 0
     width,height = pyautogui.size()
     
@@ -24,46 +26,26 @@ def random_jiggle(cur_pos, duration):
             cur_pos = (pyautogui.size()[0]/2, pyautogui.size()[1]/2)
             i += 1
 
-default_map = mouse_map.mouse_map(pyautogui.size()[0], pyautogui.size()[1])
-#Dictionary of mouse map objects
-map_dict = {
-        'A': default_map,
-        'B': default_map,
-        'C': default_map,
-        'D': default_map,
-        'E': default_map,
-        'F': default_map,
-        'G': default_map,
-        'H': default_map,
-        'I': default_map,
-        'J': default_map,
-        'K': default_map,
-        'L': default_map,
-        'M': default_map,
-        'N': default_map,
-        'O': default_map,
-        'P': default_map,
-        'Q': default_map,
-        'R': default_map,
-        'S': default_map,
-        'T': default_map,
-        'U': default_map,
-        'V': default_map,
-        'W': default_map,
-        'X': default_map,
-        'Y': default_map,
-        'Z': default_map
-    }
-
-def fill_dict():
-    alphabet =  list(string.ascii_lowercase)
-    for item in alphabet:
-        map_dict[item] = mouse_map.mouse_map(pyautogui.size()[0], pyautogui.size()[1])
-        map_dict[item].mouse_map.set_map(item)
-        map_dict[item].mouse_map.get_map()
-        
-        
+#Trace the user inputed letter with the mouse from a mouse map
+def custom_jiggler(letter):
+    custom_map = mouse_map.map_dict[letter]
+    #Loop through the map, drawing the letter
+    for row in custom_map:
+        for col in custom_map[row]:
+            if custom_map[row][col] == 1:
+                pyautogui.move(col, row)
 
 def main():
-    fill_dict()
+    print("Starting...")
+    print("Enter 1 for random, 2 for custom")
+    choice = input()
+    if choice == "1":
+        random_jiggle()
+    else:
+        print("Enter the letter you would like to be drawn")
+        letter = input()
+        custom_jiggler(letter)
+    print("Press Ctrl+C to exit")
+    
+main()
     
