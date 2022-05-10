@@ -3,7 +3,7 @@ from threading import local
 import pyautogui
 import time
 
-#Record user mouse movement for 20 seconds and store the map in a file
+#Record user mouse movement for 3 seconds and store the map in a file
 def map_record(letter_to_record, file):
     print("Enter R to start recording mouse movement")
     begin_recording = input()

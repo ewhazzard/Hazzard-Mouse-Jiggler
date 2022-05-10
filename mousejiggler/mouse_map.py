@@ -1,9 +1,7 @@
 #Mouse Map class that defines a map of mouse movements
-from secrets import randbelow
-from threading import local
 
 
-#Dictionary of mouse maps to trace each letter on the screen. Each map is a 100x100 grid of 1's and 0's, 1's being the mouse position and 0's being the rest.
+#Dictionary of mouse maps to trace each letter on the screen. Each map is a list of mouse coordinates (x pos, y pos).
 map_dict = {
         'A': 0,
         'B': 0,
