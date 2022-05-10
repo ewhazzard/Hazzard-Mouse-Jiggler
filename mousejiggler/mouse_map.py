@@ -36,7 +36,7 @@ map_dict = {
 
 
 class mouse_map:
-    m_map = [0][0]
+    m_map = [(0,0)]
     letter_maps = {
         
     }
