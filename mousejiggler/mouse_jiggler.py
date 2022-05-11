@@ -1,6 +1,6 @@
 import pyautogui
 import random
-import mouse_map
+import map_record
 import string
 
 def random_jiggle():
@@ -28,12 +28,11 @@ def random_jiggle():
 
 #Trace the user inputed letter with the mouse from a mouse map
 def custom_jiggler(letter):
-    custom_map = mouse_map.map_dict[letter]
-    #Loop through the map, drawing the letter
-    for row in custom_map:
-        for col in custom_map[row]:
-            if custom_map[row][col] == 1:
-                pyautogui.move(col, row)
+    map_record.read_maps("mouse_map.txt")
+    custom_map = map_record.map_dict[letter]
+    # Loop through the map, drawing the letter
+    for coord in custom_map:
+        pyautogui.moveTo(coord[0], coord[1])
 
 def main():
     print("Starting...")
@@ -45,7 +44,6 @@ def main():
         print("Enter the letter you would like to be drawn")
         letter = input()
         custom_jiggler(letter)
-    print("Press Ctrl+C to exit")
     
 main()
     

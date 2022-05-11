@@ -2,3 +2,4 @@ pyautogui
 time
 random
 string
+re
